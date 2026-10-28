@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohan Kumar – Senior QA Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F3;--surface:#FFFFFF;--ink:#16211C;--muted:#55645C;--line:#D5DDD8;--pass:#17803F;--teal:#0E8FA8;--fail:#B4402B;--chip:#E9F0EC;--dot:rgba(22,33,28,.16);
+  color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0C1411;--surface:#15201B;--ink:#E6EFEA;--muted:#9AAFA4;--line:#2A3830;--pass:#5FD38A;--teal:#4CC9E0;--fail:#FF8F73;--chip:#1C2A24;--dot:rgba(230,239,234,.14);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C1411;--surface:#15201B;--ink:#E6EFEA;--muted:#9AAFA4;--line:#2A3830;--pass:#5FD38A;--teal:#4CC9E0;--fail:#FF8F73;--chip:#1C2A24;--dot:rgba(230,239,234,.14);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 25%,#000 20%,transparent 80%);mask-image:radial-gradient(ellipse 80% 70% at 50% 25%,#000 20%,transparent 80%)}
+.orb{position:absolute;border-radius:50%;filter:blur(90px)}
+.o1{width:520px;height:520px;background:var(--pass);top:-180px;right:-140px;opacity:.2}
+.o2{width:460px;height:460px;background:var(--teal);top:38vh;left:-200px;opacity:.16}
+.o3{width:380px;height:380px;background:var(--pass);bottom:-160px;right:10%;opacity:.12}
+a{color:var(--ink);text-decoration-color:var(--pass);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--pass);outline-offset:3px;border-radius:4px}
+main{max-width:900px;margin:0 auto;padding:64px 24px 80px}
+h1{font-size:clamp(2.4rem,8.5vw,5rem);line-height:1;margin:0 0 10px;font-weight:800;letter-spacing:-.01em;background:linear-gradient(95deg,var(--ink) 35%,var(--pass) 75%,var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.role{font-size:1.4rem;font-weight:600;margin:0 0 4px}
+.loc{color:var(--muted);margin:0 0 22px}
+.lede{max-width:62ch;margin:0 0 26px;font-size:1.08rem}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px;padding:0;list-style:none}
+.links li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 6px 4px 16px;font-weight:600;font-size:.95rem}
+.links a{text-decoration:none}
+.links a:hover{text-decoration:underline}
+.copy{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;color:var(--muted);background:var(--chip);border:0;border-radius:50%;padding:0;cursor:pointer}
+.copy:hover{color:var(--ink)}
+.copy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.copy.ok{color:var(--pass)}.copy.bad{color:var(--fail)}
+.term{background:#0A120E;color:#E4EEE8;border-radius:14px;border:1px solid #24342B;box-shadow:0 30px 70px -34px var(--pass);font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.8;overflow:hidden}
+.bar{display:flex;gap:7px;align-items:center;padding:11px 16px;border-bottom:1px solid #24342B;color:#7F968A;font-size:.78rem}
+.bar i{width:10px;height:10px;border-radius:50%;background:#2A3C32}
+.bar span{margin-left:8px}
+.out{padding:16px 20px;overflow-x:auto}
+.out div{white-space:nowrap}
+.d{color:#7F968A}.p{color:#5FD38A}.f{color:#FF8F73}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.stats div{padding:16px 18px;border-left:1px solid var(--line)}
+.stats div:first-child{border-left:0}
+.stats b{display:block;font-size:2rem;line-height:1.1;font-weight:800;color:var(--pass)}
+.stats span{font-size:.85rem;color:var(--muted);line-height:1.3;display:block}
+section{margin-top:80px}
+h2{font-size:1.9rem;margin:0 0 26px;letter-spacing:-.02em;display:flex;align-items:center;gap:16px}
+h2::after{content:"";flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--pass),var(--line) 40%,transparent)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.tile{background:linear-gradient(180deg,var(--chip),var(--surface) 60%);border:1px solid var(--line);border-top:4px solid var(--pass);border-radius:12px;padding:20px}
+.tile:nth-child(2){border-top-color:var(--teal)}.tile:nth-child(3){border-top-color:var(--fail)}.tile:nth-child(4){border-top-color:var(--ink)}
+.tile h3{margin:0;font-size:1.2rem}
+.at{color:var(--muted);font-size:.88rem;margin:2px 0 10px}
+.tile p:not(.at){margin:0 0 14px;font-size:.95rem;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.chips li{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:2px 11px;font-size:.8rem;font-weight:600}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+.proj.feat{border:1px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,var(--pass),var(--teal)) border-box;box-shadow:0 24px 60px -40px var(--pass)}
+.proj+.proj{margin-top:16px}
+.proj h3{margin:0 0 4px;font-size:1.3rem}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 9px;margin-left:8px;vertical-align:middle}
+.stack{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.82rem;color:var(--pass);margin:0 0 14px}
+ul.b{margin:0;padding-left:1.1em}ul.b li{margin-bottom:7px;max-width:68ch}
+.tl{position:relative;margin-left:6px;padding-left:30px;border-left:2px solid var(--line);display:grid;gap:18px}
+.job{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.job::before{content:"";position:absolute;left:-39px;top:28px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:3px solid var(--pass)}
+.job:first-child::before{background:var(--pass);box-shadow:0 0 0 6px var(--chip)}
+.jh{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 16px;align-items:baseline;margin-bottom:12px}
+.jh h3{margin:0;font-size:1.2rem}
+.when{color:var(--muted);font-size:.9rem;font-weight:600}
+.org{color:var(--muted);margin:2px 0 0;font-size:.95rem}
+.sk{display:grid;grid-template-columns:150px 1fr;gap:16px 28px;margin:0}
+.sk h3{margin:3px 0 0;font-size:1rem}
+.edu{display:grid;gap:12px}
+.edu p{margin:0;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--pass);border-radius:10px;padding:14px 20px;font-weight:600}
+.edu span{display:block;font-weight:400;color:var(--muted);font-size:.92rem}
+footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+@media (max-width:640px){
+  main{padding-top:40px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}
+  .sk{grid-template-columns:1fr;gap:6px}.sk .chips{margin-bottom:12px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .out div{opacity:0;animation:ln .35s ease forwards}
+  .out div:nth-child(1){animation-delay:.1s}.out div:nth-child(2){animation-delay:.5s}.out div:nth-child(3){animation-delay:.9s}
+  .out div:nth-child(4){animation-delay:1.3s}.out div:nth-child(5){animation-delay:1.7s}.out div:nth-child(6){animation-delay:2.1s}
+  @keyframes ln{to{opacity:1}}
+  .o1{animation:dr 26s ease-in-out infinite alternate}.o2{animation:dr 32s ease-in-out infinite alternate-reverse}.o3{animation:dr 28s ease-in-out infinite alternate}
+  @keyframes dr{to{transform:translate(60px,40px)}}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+<main>
+  <header>
+    <h1>MOHAN KUMAR</h1>
+    <p class="role">Senior QA Engineer</p>
+    <p class="loc">Ontario, Canada. Open to roles in the Greater Toronto Area and Waterloo Region.</p>
+    <p class="lede"><strong>I help teams release with confidence by catching problems earlier.</strong> My Playwright and pytest framework raised automated coverage by 40% at Aviso Wealth, runs smoke and regression tests on every pull request, and ran consistently across four production releases. I also built an AI triage agent that classifies failed test runs, so developers get faster feedback on what broke and why. Nine years across insurance, wealth management, and e-commerce, and I mentor engineers on automation best practices.</p>
+    <ul class="links">
+      <li><a href="mailto:mokan2026@gmail.com">mokan2026@gmail.com</a><button type="button" class="copy" data-copy="mokan2026@gmail.com" aria-label="Copy email address" title="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></button></li>
+      <li><a href="tel:+15483337512">+1 548-333-7512</a><button type="button" class="copy" data-copy="+1 548-333-7512" aria-label="Copy phone number" title="Copy phone number"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></button></li>
+      <li><a href="https://github.com/Mohan2026" rel="noopener">GitHub</a><button type="button" class="copy" data-copy="https://github.com/Mohan2026" aria-label="Copy GitHub link" title="Copy GitHub link"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></button></li>
+      <li><a href="https://www.linkedin.com/in/mohan-kumar-30636a63/" rel="noopener">LinkedIn</a><button type="button" class="copy" data-copy="https://www.linkedin.com/in/mohan-kumar-30636a63/" aria-label="Copy LinkedIn link" title="Copy LinkedIn link"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></button></li>
+    </ul>
+    <div class="term" role="img" aria-label="Test run summary: 9 plus years of experience, coverage up 40 percent, 4 releases, one failure triaged by an AI agent">
+      <div class="bar"><i></i><i></i><i></i><span>mohan-kumar: test run</span></div>
+      <div class="out">
+        <div><span class="d">$</span> pytest --suite mohan-kumar</div>
+        <div><span class="p">PASSED</span> 9+ years building and maintaining automation</div>
+        <div><span class="p">PASSED</span> UI, API, and integration tests, coverage up 40%</div>
+        <div><span class="p">PASSED</span> smoke and regression on every PR across 4 releases</div>
+        <div><span class="f">FAILED</span> test_checkout_flow, flagged by the triage agent</div>
+        <div><span class="d">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cause classified, summary sent to the developer</span></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div><b>9+</b><span>years in test automation</span></div>
+      <div><b>40%</b><span>more automated coverage</span></div>
+      <div><b>25%</b><span>better app stability under peak load</span></div>
+      <div><b>4</b><span>production releases in the past year</span></div>
+    </div>
+  </header>
+
+  <section id="domains">
+    <h2>Domains I’ve worked in</h2>
+    <div class="tiles">
+      <div class="tile"><h3>Insurance</h3><p class="at">Farmers Insurance, via Accenture</p><p>Guidewire BillingCenter in a P&amp;C environment: functional, regression, and integration testing of end-to-end workflows.</p><ul class="chips"><li>Guidewire BillingCenter</li><li>P&amp;C</li><li>Selenium</li><li>REST Assured</li></ul></div>
+      <div class="tile"><h3>Wealth management</h3><p class="at">Aviso Wealth</p><p>Playwright and pytest automation, API and SQL Server data validation, and release readiness across four releases.</p><ul class="chips"><li>Playwright</li><li>pytest</li><li>SQL Server</li><li>Azure DevOps</li></ul></div>
+      <div class="tile"><h3>E-commerce</h3><p class="at">Amazon</p><p>Selenium and TestNG automation for shopping workflows, plus JMeter peak-load testing.</p><ul class="chips"><li>Selenium</li><li>TestNG</li><li>JMeter</li></ul></div>
+      <div class="tile"><h3>Enterprise systems</h3><p class="at">Accenture client work</p><p>Data flow checks across Salesforce, SAP, and mainframe systems, upstream and downstream.</p><ul class="chips"><li>Salesforce</li><li>SAP</li><li>Mainframe</li><li>MongoDB</li></ul></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="proj feat">
+      <h3>AI-assisted test automation framework</h3>
+      <p class="stack">Python, Playwright, pytest, Docker, GitHub Actions, OpenAI API</p>
+      <ul class="b">
+        <li>A Dockerized Playwright and pytest framework whose GitHub Actions pipelines run containerized tests in CI.</li>
+        <li>An agentic workflow on the OpenAI API that analyzes failed test runs, classifies root causes, and summarizes results so triage is faster.</li>
+        <li>GitHub Copilot used to scaffold tests and utilities throughout.</li>
+      </ul>
+      <p style="margin:16px 0 0"><a href="https://github.com/Mohan2026/ecommerce-automation-playwright-python" rel="noopener">View the code on GitHub</a></p>
+    </div>
+    <div class="proj">
+      <h3>Expense tracker application<span class="tag">Academic</span></h3>
+      <p class="stack">C#, NUnit, SQL Server, XAML, .NET Framework, Docker, GitHub</p>
+      <ul class="b">
+        <li>Built an app for managing personal and group finances, working in Agile sprints that simulated collaboration with business analysts, product owners, and testers.</li>
+        <li>Wrote unit and integration tests covering user authentication, expense tracking, and real-time balance updates.</li>
+      </ul>
+    </div>
+    <div class="proj">
+      <h3>OWASP Top 10 security testing<span class="tag">Academic</span></h3>
+      <p class="stack">Burp Suite, Kali Linux, PostgreSQL, SQL</p>
+      <ul class="b"><li>Ran vulnerability scans and fixed XSS, CSRF, and SQL injection issues, applying security best practices to the application.</li></ul>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="tl">
+      <article class="job">
+        <div class="jh"><div><h3>Quality Assurance Lead</h3><p class="org">Aviso Wealth, Canada (remote)</p></div><span class="when">Jun 2025 – Oct 2026</span></div>
+        <ul class="b">
+          <li><strong>Coverage up 40%.</strong> Designed and built a Python, Playwright, and pytest framework with reusable page objects, fixtures, and utilities covering UI, API, and integration testing.</li>
+          <li><strong>Faster developer feedback.</strong> Wired the suite into GitHub Actions and Azure DevOps so smoke and regression tests run on every pull request.</li>
+          <li><strong>Consistent releases.</strong> Maintained test data, environments, and configurations so suites ran consistently across four production releases in the past year.</li>
+          <li><strong>Data you can trust.</strong> Validated REST APIs with Postman and Swagger against requirements, and checked data integrity across interfaces, services, and MS SQL Server with SQL queries and upstream and downstream checks.</li>
+          <li><strong>Risk-focused triage.</strong> Ran root-cause analysis on test and release failures, prioritized critical workflows by risk, and escalated quality risks to stakeholders. Logged defects with clear reproduction steps and worked with developers to close them quickly.</li>
+          <li><strong>Visibility for leadership.</strong> Reported coverage, defect trends, and release readiness through Power BI and Excel dashboards.</li>
+          <li><strong>Team impact.</strong> Mentored junior QA engineers, took part in peer and code reviews, and used GitHub Copilot to speed up test development and failure-log analysis. Partnered with product managers, analysts, developers, and global QA teams in sprint planning to define acceptance criteria and testability early.</li>
+        </ul>
+        <ul class="chips" style="margin-top:16px"><li>Playwright</li><li>pytest</li><li>GitHub Actions</li><li>Azure DevOps</li><li>Postman</li><li>MS SQL Server</li><li>Power BI</li><li>GitHub Copilot</li></ul>
+      </article>
+      <article class="job">
+        <div class="jh"><div><h3>Sr. Quality Engineering Analyst</h3><p class="org">Accenture, for Farmers Insurance and Heineken (remote)</p></div><span class="when">Jul 2021 – Apr 2023</span></div>
+        <ul class="b">
+          <li><strong>End-to-end coverage.</strong> Tested insurance workflows across Guidewire BillingCenter, Salesforce, SAP, and mainframe systems, verifying data flow between upstream and downstream systems.</li>
+          <li><strong>Lower regression risk.</strong> Maintained and extended Java and Selenium automation (Page Object Model, TestNG), updating scripts, locators, and reusable methods as the application changed, plus Cucumber BDD scenarios for smoke and regression suites.</li>
+          <li><strong>Reliable backend data.</strong> Automated REST API checks with REST Assured and Postman, verifying responses and data in SQL Server and MongoDB.</li>
+          <li><strong>Continuous testing.</strong> Configured Jenkins pipelines on AWS EC2 with Git and Maven for scheduled and on-demand test runs.</li>
+          <li><strong>Full traceability.</strong> Maintained the requirements-to-test-to-defect traceability matrix in Jira and Zephyr, investigated automation failures independently, and verified fixes.</li>
+        </ul>
+        <ul class="chips" style="margin-top:16px"><li>Guidewire BillingCenter</li><li>Selenium</li><li>TestNG</li><li>Cucumber BDD</li><li>REST Assured</li><li>Jenkins</li><li>AWS EC2</li><li>Jira</li><li>Zephyr</li></ul>
+      </article>
+      <article class="job">
+        <div class="jh"><div><h3>Quality Analyst</h3><p class="org">Amazon, India</p></div><span class="when">Mar 2018 – Jul 2021</span></div>
+        <ul class="b">
+          <li><strong>Maintainable automation.</strong> Built Java and Selenium WebDriver automation with TestNG and Page Object Model for e-commerce workflows, plus reusable libraries that removed duplicated code.</li>
+          <li><strong>Stability up 25%.</strong> Ran JMeter performance tests under peak load, contributing to a 25% improvement in application stability.</li>
+          <li><strong>Release support.</strong> Ran functional and regression automation, analyzed failures, and supported defect resolution across multiple releases, in Agile teams using Git for branching and conflict resolution.</li>
+        </ul>
+        <ul class="chips" style="margin-top:16px"><li>Java</li><li>Selenium WebDriver</li><li>TestNG</li><li>JMeter</li><li>Git</li></ul>
+      </article>
+      <article class="job">
+        <div class="jh"><div><h3>Manual Test Engineer</h3><p class="org">SS Technovation, India</p></div><span class="when">Jun 2015 – Oct 2017</span></div>
+        <ul class="b">
+          <li><strong>Feature stability.</strong> Ran smoke, sanity, regression, and exploratory testing after application changes and deployments.</li>
+          <li><strong>Integration confidence.</strong> Validated third-party integrations and end-to-end business workflows, finding defects and verifying fixes.</li>
+          <li><strong>Defect lifecycle.</strong> Managed defects from report to closure in Rally, working with developers to track issues and support quality delivery.</li>
+        </ul>
+        <ul class="chips" style="margin-top:16px"><li>Manual testing</li><li>Exploratory testing</li><li>Regression</li><li>Rally</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="sk">
+      <h3>Languages</h3><ul class="chips"><li>Python</li><li>TypeScript</li><li>Java</li><li>SQL</li></ul>
+      <h3>Test frameworks</h3><ul class="chips"><li>Playwright</li><li>pytest</li><li>Selenium WebDriver</li><li>TestNG</li><li>Cucumber BDD</li><li>Page Object Model</li></ul>
+      <h3>CI/CD</h3><ul class="chips"><li>GitHub Actions</li><li>Jenkins</li><li>Azure DevOps</li><li>Docker</li><li>AWS EC2</li><li>Maven</li><li>Git</li></ul>
+      <h3>API and data</h3><ul class="chips"><li>REST Assured</li><li>Postman</li><li>Swagger</li><li>MS SQL Server</li><li>MongoDB</li></ul>
+      <h3>Performance and security</h3><ul class="chips"><li>JMeter</li><li>Burp Suite</li><li>OWASP Top 10</li></ul>
+      <h3>AI-assisted work</h3><ul class="chips"><li>OpenAI API</li><li>GitHub Copilot</li><li>Automated failure analysis</li></ul>
+      <h3>Quality practice</h3><ul class="chips"><li>Test design</li><li>Risk-based testing</li><li>Regression strategy</li><li>Defect triage</li><li>Root-cause analysis</li><li>Release readiness</li></ul>
+      <h3>Collaboration</h3><ul class="chips"><li>Agile and Scrum</li><li>Code reviews</li><li>Mentoring</li><li>Jira</li><li>Confluence</li></ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu">
+      <p>Postgraduate Diploma, Software Quality Assurance and Test Engineering<span>Conestoga College, Canada, 2024</span></p>
+      <p>Postgraduate Diploma, Reporting Systems and Database Development<span>Conestoga College, Canada, 2023</span></p>
+      <p>Bachelor of Engineering, Aeronautical Engineering<span>Sri Ramakrishna Engineering College, India, 2011 to 2015</span></p>
+    </div>
+  </section>
+
+  <footer>Open to senior test automation roles. Write to <a href="mailto:mokan2026@gmail.com">mokan2026@gmail.com</a>.</footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy'),icon=b.innerHTML,title=b.title,check='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
+    function done(ok){b.innerHTML=ok?check:icon;b.classList.add(ok?'ok':'bad');b.title=ok?'Copied':'Copy failed';setTimeout(function(){b.innerHTML=icon;b.className='copy';b.title=title},1600)}
+    function fb(){try{var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var ok=document.execCommand('copy');document.body.removeChild(a);done(ok)}catch(e){done(false)}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true)},fb)}else{fb()}
+  });
+});
+</script>
+</body>
+</html>
